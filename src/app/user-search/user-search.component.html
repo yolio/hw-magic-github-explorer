@@ -1,0 +1,13 @@
+<input #searchBox id="search-box" (input)="search(searchBox.value)" />
+
+<ul class="search-result">
+  <li *ngFor="let user of users$.items | async" >
+    <img src="{{ user.avatar_url }}" alt="User Avatar" width="150">
+    `@${{ user.login }}  ${{ user.name }}`
+     <ul>
+       <li><a routerLink="/detail/{{ user.login }}">View Details</a></li>
+       <li><a href="{{ user.html_url }}" target="_blank">View on GitHub</a></li>
+     </ul>
+  </li>
+</ul>
+<pre>{{ users$.total_count }}</pre>

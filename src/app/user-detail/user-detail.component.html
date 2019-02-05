@@ -1,0 +1,16 @@
+<div id="user-card">
+  <img src="{{ user.avatar_url }}" alt="User Avatar" width="50">
+  <h2>Username</h2>
+  <a href="{{ user.html_url }}" target="_blank">View on GitHub</a>
+  <hr>
+  <ul id="infoCard">
+    <li *ngIf="user.name">Name: {{ user.name }}</li>
+    <li>Created at: {{ user.created_at | date}}</li>
+    <li *ngIf="user.location">Location: {{ user.location }}</li>
+    <li *ngIf="user.company">Company: {{ user.company }}</li>
+    <li *ngIf="user.email">Email: {{ user.email }}</li>
+  </ul>
+  <hr>
+  <ul id="repos">
+  </ul>
+</div>

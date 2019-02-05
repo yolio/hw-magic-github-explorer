@@ -1,0 +1,10 @@
+<div id="search-component">
+  <input type="text" placeholder="try octocat" #searchBox id="search-box" (input)="search(searchBox.value)" />
+
+  <ul *ngIf="users$.items" class="search-result">
+    <li *ngFor="let user of users$.items | async" >
+      <a routerLink="/detail/{{ user.username }}">Details</a>
+    </li>
+  </ul>
+  <pre>{{users$}}</pre>
+</div>
