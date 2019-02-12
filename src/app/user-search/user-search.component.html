@@ -1,13 +1,13 @@
 <input #searchBox id="search-box" (input)="search(searchBox.value)" />
 
 <ul class="search-result">
-  <li *ngFor="let user of users$.items | async" >
+  <li *ngFor="let user of matchedUsers$ | async">
     <img src="{{ user.avatar_url }}" alt="User Avatar" width="150">
-    `@${{ user.login }}  ${{ user.name }}`
+    @{{ user.login }} <span *ngIf="user.name">{{ user.name }}</span>
      <ul>
        <li><a routerLink="/detail/{{ user.login }}">View Details</a></li>
        <li><a href="{{ user.html_url }}" target="_blank">View on GitHub</a></li>
      </ul>
   </li>
 </ul>
-<pre>{{ users$.total_count }}</pre>
+<pre>{{ matchedUsers$.total_count | async }}</pre>
