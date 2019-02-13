@@ -1,14 +1,22 @@
 <div id="user-card">
-  <img src="{{ user.avatar_url }}" alt="User Avatar" width="50">
-  <h2>Username</h2>
+  <img src="{{ user.avatar_url }}" alt="User Avatar" width="150">
+  <h2>@{{ user.login }}</h2>
   <a href="{{ user.html_url }}" target="_blank">View on GitHub</a>
   <hr>
   <ul id="infoCard">
+    <h3>Details:</h3>
     <li *ngIf="user.name">Name: {{ user.name }}</li>
-    <li>Created at: {{ user.created_at | date}}</li>
+    <li>Created at: {{ user.created_at | date }}</li>
     <li *ngIf="user.location">Location: {{ user.location }}</li>
     <li *ngIf="user.company">Company: {{ user.company }}</li>
     <li *ngIf="user.email">Email: {{ user.email }}</li>
+    <h4>@{{ user.login }}'s Repositories:</h4>
+    <ul id="repoList" *ngIf="repos">
+      <li class="repo" *ngFor="let repo of repos">
+        <a href="repo.html_url" target="_blank">{{ repo.name }}</a>
+        <br>{{ repo.description }}
+      </li>
+    </ul>
   </ul>
   <hr>
   <ul id="repos">
